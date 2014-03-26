@@ -105,10 +105,6 @@
                             }
                         </td>
                         <td>
-                             @*** 
-                             @form(routes.Application.approve(computer.id)) { - this is a Controller connected to DB directly
-                             instead I use BP controller 
-                             ***@
                              @form(routes.BusinessProcessController.approve(computer.id)) {
                                  <input type="submit" value="Approve it" class="btn danger">
                              }

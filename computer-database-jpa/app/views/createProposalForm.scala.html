@@ -8,9 +8,7 @@
     
     <h1>Propose new computer for the inventory</h1>
     
-    @**    @form(routes.Application.saveProposal()) { - this is a Controller, that connected to DB directly
-           instead I use a BP Controller
-    **@
+    
     @form(routes.BusinessProcessController.saveProposal()) {
         
         <fieldset>
