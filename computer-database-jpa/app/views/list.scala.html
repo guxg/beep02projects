@@ -44,6 +44,11 @@
             <strong>Done!</strong> @flash.get("success")
         </div>
     } 
+    @if(flash.containsKey("failure")) {
+        <div class="alert-message warning">
+            <strong>Failure!</strong> @flash.get("failure")
+        </div>
+    } 
 
     <div id="actions">
     
