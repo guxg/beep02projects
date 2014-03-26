@@ -37,7 +37,7 @@ import views.html.createProposalForm;
 public class BusinessProcessController extends Controller{
 	
 	@PersistenceContext
-	public EntityManager entityManager;
+	public EntityManager       entityManager;
 	@Autowired
 	public RuntimeService      runtimeService;
 	@Autowired
@@ -58,6 +58,7 @@ public class BusinessProcessController extends Controller{
 	//UI action
 	@Transactional
     public Result saveProposal() {
+		
         //get the form
 		Form<ComputerProposal> computerForm = form(ComputerProposal.class).bindFromRequest();
         
@@ -93,28 +94,28 @@ public class BusinessProcessController extends Controller{
     	
     	ComputerProposal c = entityManager.find(ComputerProposal.class, id);
     	
-    	if(c==null){
+    	if(c == null){
     		//TODO process error
     		flash("failure", "Computer approval entity is not found");
     		return GO_PROPOSALS;
     	}
     	
+    	//find the task to approve
     	Task task = taskService.createTaskQuery().taskDefinitionKey("userApproveTask").processVariableValueEquals("computerRequest", c).singleResult();
-    	
     	if(task==null){
     		//TODO process error
     		flash("failure", "Computer approval task is not found");
     		return GO_PROPOSALS;
     	}
     	
-    	
-    	
     	//add variables    	
     	Map<String, Object>  variables   = new HashMap<>();
     	variables.put("id", id);
+    	
+    	//activate the task
 		taskService.complete(task.getId(), variables);
 		
-    	//find the task to approve
+    	//TODO: error if task failed
 		flash("success", "Computer has been approved");
         return GO_PROPOSALS;
     }
