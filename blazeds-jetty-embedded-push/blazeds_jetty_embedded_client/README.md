@@ -15,12 +15,12 @@ Project settings:
 
 Flex server:
 
-Root folder:  <path to server project>\blazeds_jetty_embedded\src\resources
+Root folder:  [path to server project]\blazeds_jetty_embedded\src\resources
 Root URL:     http://localhost:8080/
 Context root: app
 
 Output folder:
-<path to server project>\blazeds_jetty_embedded\src\resources\flexdata
+[path to server project]\blazeds_jetty_embedded\src\resources\flexdata
   
 
   
